@@ -1,5 +1,8 @@
 {
   "name": "axon-frontend-test-challenge",
+  "author": {
+    "email": "sonhoang.nh@gmail.com"
+  },
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
