@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, transferArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Box } from '../../models/box';
 
 @Component({
@@ -10,17 +9,47 @@ import { Box } from '../../models/box';
 })
 export class BoardComponent implements OnInit {
 
-  boxes: Box[] = [
-    { id: 1, color: '#ff5733'},
-    { id: 2, color: '#55efc4'},
-    { id: 1, color: '#ff5733'},
-    { id: 2, color: '#55efc4'},
-    { id: 1, color: '#ff5733'},
-    { id: 2, color: '#55efc4'},
-    { id: 1, color: '#ff5733'},
-    { id: 2, color: '#55efc4'},
-    { id: 1, color: '#ff5733'},
-    { id: 2, color: '#55efc4'},
+  lists: Box[][] = [
+    [
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+    ],
+    [
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+    ],
+    [
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+    ],
+    [
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+      { id: 1, color: '#ff5733'},
+      { id: 2, color: '#55efc4'},
+    ]
   ];
 
   constructor() { }
@@ -29,7 +58,14 @@ export class BoardComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.boxes, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
 }

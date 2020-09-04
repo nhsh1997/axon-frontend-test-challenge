@@ -1,3 +1,11 @@
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let box of boxes" cdkDrag [style.background]="box.color"></div>
+<div cdkDropListGroup>
+  <!-- All lists in here will be connected. -->
+  <div cdkDropList
+       class="row"
+       [cdkDropListData]="list"
+       cdkDropListOrientation="horizontal"
+       *ngFor="let list of lists"
+       (cdkDropListDropped)="drop($event)">
+    <div class="box" *ngFor="let box of list" cdkDrag [style.background]="box.color"></div>
+  </div>
 </div>
