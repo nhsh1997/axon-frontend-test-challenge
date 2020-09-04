@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, transferArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Box } from '../../models/box';
+import { Box } from '../../_models/box';
+import { board } from 'src/app/_data/board';
 
 @Component({
   selector: 'app-board',
@@ -9,50 +10,11 @@ import { Box } from '../../models/box';
 })
 export class BoardComponent implements OnInit {
 
-  lists: Box[][] = [
-    [
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-    ],
-    [
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-    ],
-    [
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-    ],
-    [
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-      { id: 1, color: '#ff5733'},
-      { id: 2, color: '#55efc4'},
-    ]
-  ];
+  rows: Box[][];
 
-  constructor() { }
+  constructor() {
+    this.rows = board;
+  }
 
   ngOnInit() {
   }
@@ -61,11 +23,22 @@ export class BoardComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      console.log(event.previousContainer.data);
+      console.log(event.container.data);
+      console.log(event.previousIndex);
+      console.log(event.currentIndex);
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex)
     }
+
+  }
+
+  swapTwoRows(previousContainerData, containerData, previousIndex, currentIndex){
+    previousContainerData[previousIndex] = containerData[currentIndex];
+    let temp =  previousContainerData[previousIndex];
+    containerData[currentIndex] = temp;
   }
 
 }
