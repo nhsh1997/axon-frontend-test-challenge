@@ -23,22 +23,18 @@ export class BoardComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      console.log(event.previousContainer.data);
-      console.log(event.container.data);
-      console.log(event.previousIndex);
-      console.log(event.currentIndex);
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex)
+      this.swapTwoBoxes(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
     }
 
   }
 
-  swapTwoRows(previousContainerData, containerData, previousIndex, currentIndex){
+  swapTwoBoxes(previousContainerData, containerData, previousIndex, currentIndex){
+    if (currentIndex == 8){
+      currentIndex = currentIndex - 1;
+    }
+    let oldTarget = previousContainerData[previousIndex];
     previousContainerData[previousIndex] = containerData[currentIndex];
-    let temp =  previousContainerData[previousIndex];
-    containerData[currentIndex] = temp;
+    containerData[currentIndex] = oldTarget;
   }
 
 }
