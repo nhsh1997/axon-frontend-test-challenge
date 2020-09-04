@@ -6,6 +6,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * npm: `version 6.9.0`
 * TypeScript: `version 3.8.3`
 
+## Quick Start
+
+```
+git clone '.\nguyen_ho_son_hoang.bundle'
+cd nguyen_ho_son_hoang
+
+# Install Angular CLI if necessary
+npm install -g @angular/cli@latest
+
+# Install dependencies
+npm install
+
+# Run application in development
+npm start
+
+Go to http://localhost:4200/ in your browser 
+```
 
 ## Running the Application
 1. Run `npm install`
