@@ -12,6 +12,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 git clone '.\nguyen_ho_son_hoang.bundle'
 cd nguyen_ho_son_hoang
 
+Or
+
+git clone https://github.com/nhsh1997/axon-frontend-test-challenge.git
+cd axon-frontend-test-challenge
+
 # Install Angular CLI if necessary
 npm install -g @angular/cli@latest
 
