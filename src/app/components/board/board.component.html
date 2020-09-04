@@ -1,1 +1,3 @@
-<p>board works!</p>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let box of boxes" cdkDrag [style.background]="box.color"></div>
+</div>
